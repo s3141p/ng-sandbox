@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">
+  <button
+    (click)="drawer.toggle()"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span class="logo" (click)="resetState()">Devkit</span>
+</mat-toolbar>
+
+<mat-drawer-container class="container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="over">
+    <div *ngFor="let lib of libraries">
+      <h3 class="lib-title">{{ lib.name }}</h3>
+
+      <mat-list role="list">
+        <button
+          class="nav-button"
+          mat-button
+          (click)="openExamplesFor(lib, component)"
+          *ngFor="let component of lib.components"
+        >
+          {{ component.name }}
+        </button>
+      </mat-list>
+    </div>
+  </mat-drawer>
+
+  <div class="sidenav-content">
+    <div class="examples">
+      <ng-container *ngFor="let example of currentComponent?.examples">
+        <devkit-example
+          [example]="example"
+          [componentModule]="currentComponent?.componentModule"
+          [component]="currentComponent?.component"
+        ></devkit-example>
+      </ng-container>
+    </div>
+  </div>
+</mat-drawer-container>

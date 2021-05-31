@@ -1,0 +1,51 @@
+$toolbarHeight: 64px;
+
+:host {
+  height: 100%;
+  display: block;
+}
+
+.logo {
+  margin-left: 20px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.container {
+  height: calc(100% - #{$toolbarHeight});
+  width: 100%;
+}
+
+.sidenav-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenav {
+  text-align: center;
+  width: 175px;
+}
+
+.lib-title {
+  font-weight: 300;
+}
+
+.nav-button {
+  font-size: 16px;
+  width: 100%;
+  height: 40px;
+  font-weight: 400;
+}
+
+.examples {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+devkit-example {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+}

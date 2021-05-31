@@ -1,0 +1,14 @@
+{
+  "builders": {
+    "serve": {
+      "implementation": "./src/builders/serve/index",
+      "schema": "./src/builders/serve/schema.json",
+      "description": "@ui-devkit serve"
+    },
+    "build": {
+      "implementation": "./src/builders/build/index",
+      "schema": "./src/builders/build/schema.json",
+      "description": "@ui-devkit build"
+    }
+  }
+}

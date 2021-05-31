@@ -1,0 +1,17 @@
+<div class="heading">
+  <span>{{ example.name }}</span>
+</div>
+
+<div class="example">
+  <devkit-component-preview
+    *ngIf="example.type === 'Component'"
+    [example]="example"
+  ></devkit-component-preview>
+
+  <devkit-props-preview
+    *ngIf="example.type === 'Props' && component && componentModule"
+    [example]="example"
+    [componentModule]="componentModule"
+    [component]="component"
+  ></devkit-props-preview>
+</div>
