@@ -4,7 +4,7 @@ import { InputComponentModule } from '../../components/input';
 
 @Component({
   selector: 'devkit-input-example',
-  template: '<devkit-mock-input data="data from wrapper"></devkit-mock-input>',
+  template: '<devkit-input data="data from wrapper"></devkit-input>',
 })
 export class InputExample {}
 

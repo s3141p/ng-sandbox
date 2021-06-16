@@ -18,6 +18,7 @@ export interface ComponentPropsExampleDescriptor {
   name: string;
   output?: ExampleOutput;
   input?: ExampleInput;
+  projectedContent?: any[][];
 }
 
 export type ExampleDescriptor =

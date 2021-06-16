@@ -47,7 +47,12 @@ export class PropsPreviewComponent implements OnInit, OnDestroy {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
       this.component
     );
-    const { instance } = this.vc.createComponent(componentFactory);
+    const { instance } = this.vc.createComponent(
+      componentFactory,
+      this.vc.length,
+      undefined,
+      this.example.projectedContent || []
+    );
 
     this.initInput(instance, this.example.input);
     this.initOutput(instance, this.example.output);

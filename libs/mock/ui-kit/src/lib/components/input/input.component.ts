@@ -5,25 +5,17 @@ import {
   Output,
   EventEmitter,
   OnInit,
-  OnDestroy,
 } from '@angular/core';
 
 @Component({
-  selector: 'devkit-mock-input',
+  selector: 'devkit-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputComponent implements OnInit, OnDestroy {
+export class InputComponent implements OnInit {
   @Input() data: string = '';
   @Output() out = new EventEmitter<string>();
 
-  id!: number;
-
-  ngOnInit() {
-  }
-
-  ngOnDestroy() {
-    clearInterval(this.id);
-  }
+  ngOnInit() {}
 }
