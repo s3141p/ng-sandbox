@@ -6,14 +6,14 @@ import { InputComponentModule } from '../../components/input';
   selector: 'devkit-input-example',
   template: '<devkit-input data="data from wrapper"></devkit-input>',
 })
-export class InputExample {}
+export class InputExampleComponent {}
 
-@NgModule({ imports: [InputComponentModule], declarations: [InputExample] })
+@NgModule({ imports: [InputComponentModule], declarations: [InputExampleComponent] })
 export class AComponentExampleModule {}
 
 export const InputComponentExample: ExampleDescriptor = {
   type: 'Component',
   name: 'Rendering through wrapper',
-  exampleComponent: InputExample,
+  exampleComponent: InputExampleComponent,
   exampleModule: AComponentExampleModule,
 };

@@ -34,7 +34,9 @@ export function alignCompilerOptionsPath(
     const paths = {};
 
     Object.keys(options.paths).forEach((key) => {
-      paths[key] = options.paths[key].map((path) => join(pathPatch, path));
+      if (options.paths?.[key]) {
+        paths[key] = options.paths[key].map((path) => join(pathPatch, path));
+      }
     });
 
     options.paths = paths;
@@ -43,7 +45,7 @@ export function alignCompilerOptionsPath(
   return options;
 }
 
-export function generatePathPatch(from: string, to: string) {
+export function generatePathPatch(from: string, to: string): string {
   const fromPath = from.split('/');
   const toPath = to.split('/');
   const min = Math.min(fromPath.length, toPath.length);
@@ -56,4 +58,6 @@ export function generatePathPatch(from: string, to: string) {
       return stepsBack.concat(startfrom).join('/');
     }
   }
+
+  return `Can't destinate from: ${from} to: ${to}`;
 }

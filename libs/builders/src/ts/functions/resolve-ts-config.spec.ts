@@ -210,7 +210,7 @@ describe('Resolve ts config', () => {
     };
 
     beforeEach(() => {
-      mockedRead.mockImplementation((fileName: string, readFile: unknown) => {
+      mockedRead.mockImplementation((fileName: string) => {
         switch (fileName) {
           case 'libs/libA/tsconfig.lib.json':
             return { config: libConfig };

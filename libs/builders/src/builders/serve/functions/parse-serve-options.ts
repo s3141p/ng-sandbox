@@ -1,12 +1,18 @@
-import { JsonObject } from '@angular-devkit/core';
-import { ServeOptions } from '../../shared/types/options-serve';
+import { DevServerBuilderOptions } from '@angular-devkit/build-angular';
 
-export function parseServerOptions(
-  options: ServeOptions | JsonObject
-): ServeOptions {
+import { ServeOptions } from '../../shared/types/options-serve';
+import { TargetLib } from '../../shared/types/target-lib';
+
+export function parseServerOptions({
+  targetLib,
+  ...options
+}: ServeOptions): {
+  targetLib?: TargetLib;
+  options: DevServerBuilderOptions;
+} {
   options.port = options.port || 4200;
   options.watch = options.watch || true;
   options.host = options.host || 'localhost';
 
-  return options as ServeOptions;
+  return { targetLib, options };
 }

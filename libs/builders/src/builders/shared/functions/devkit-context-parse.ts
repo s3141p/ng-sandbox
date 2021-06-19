@@ -1,34 +1,32 @@
 import { join } from 'path';
-import { JsonObject } from '@angular-devkit/core';
+import { BrowserBuilderOptions } from '@angular-devkit/build-angular';
 
-import { ProjectMetadata } from '../../../ng/types/project-metadata';
+import { AppMetadata } from '../../../ng/types/app-metadata';
 import { generateDiscoveryTsConfigPath } from '../../shared/functions/generate-discovery-config-name';
 import { parseLibDescriptors } from '../../shared/functions/parse-lib-descriptor';
 import { DevkitContext } from '../types/devkit-context';
-import { BuildOptions } from '../../shared/types/options-build';
 import { TargetLib } from '../../shared/types/target-lib';
+import { Devkitrc } from '../types/devkitrc';
+import { LibMetadata } from '../../../ng/types/lib-metadata';
 
 export function parseDevkitContext(
   projectName: string,
-  targetLib: TargetLib,
+  devkitrc: Devkitrc,
+  buildOptions: BrowserBuilderOptions,
+  appMeta: AppMetadata,
+  libsMeta: LibMetadata[],
   discoveryFolder: string,
-  buildOptions: BuildOptions,
-  appMeta: JsonObject,
-  libsMeta: JsonObject[]
+  targetLib?: TargetLib
 ): DevkitContext {
-  return ({
+  return {
     buildOptions,
     appMeta,
-    libsDescriptors: parseLibDescriptors(
-      buildOptions.libs,
-      (libsMeta as unknown) as ProjectMetadata[],
-      targetLib
-    ),
+    libsDescriptors: parseLibDescriptors(devkitrc.libs, libsMeta, targetLib),
     discoveryFolder: discoveryFolder,
     discoveryTsPath: join(discoveryFolder, 'discovery.ts'),
     discoveryConfigPath: generateDiscoveryTsConfigPath(
       discoveryFolder,
       projectName
     ),
-  } as unknown) as DevkitContext;
+  };
 }

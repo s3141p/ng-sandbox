@@ -5,15 +5,15 @@ import {
   targetFromTargetString,
 } from '@angular-devkit/architect';
 import {
+  BrowserBuilderOptions,
   DevServerBuilderOptions,
   executeDevServerBuilder,
 } from '@angular-devkit/build-angular';
 import { generateTsConfig } from '../shared/functions/generate-discovery-items';
 import { generateDiscoveryTs } from '../shared/functions/generate-discovery-ts';
-import { parseBuildOptions } from '../shared/functions/parse-build-options';
 
 import { writeDiscoveryFilesAndClear } from '../shared/functions/save-ts-config';
-import { resolveDevkitContext } from '../shared/functions/serve-context-resolve';
+import { resolveDevkitContext } from '../shared/functions/devkit-context-resolve';
 import { BuilderExecutor } from '../shared/types/builder-executor';
 import { ServeOptions } from '../shared/types/options-serve';
 import { overwriteTsConfigPath } from './functions/overwrite-ts-config-path';
@@ -22,17 +22,21 @@ import { parseServerOptions } from './functions/parse-serve-options';
 const execute = (
   executebBuilder: BuilderExecutor<ServeOptions>
 ): BuilderHandlerFn<ServeOptions> => (
-  options: ServeOptions,
+  serveOptions: ServeOptions,
   context: BuilderContext
 ): Promise<any> => {
+  const { targetLib, options } = parseServerOptions(serveOptions);
   const browserTarget = targetFromTargetString(options.browserTarget);
-  const serveOptions = parseServerOptions(options);
 
   return context
     .getTargetOptions(browserTarget)
-    .then((value) => parseBuildOptions(value))
     .then((buildOptions) =>
-      resolveDevkitContext(serveOptions.targetLib, 'tmp', buildOptions, context)
+      resolveDevkitContext(
+        (buildOptions as unknown) as BrowserBuilderOptions,
+        context,
+        'tmp',
+        targetLib
+      )
     )
     .then((devkitContext) => {
       overwriteTsConfigPath(options, devkitContext, context);
