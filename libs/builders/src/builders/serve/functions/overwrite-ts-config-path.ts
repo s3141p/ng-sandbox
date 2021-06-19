@@ -2,16 +2,16 @@ import {
   BuilderContext,
   targetFromTargetString,
 } from '@angular-devkit/architect';
+import { DevServerBuilderOptions } from '@angular-devkit/build-angular';
 import { JsonObject } from '@angular-devkit/core';
 
 import { isBuildOptions } from '../../../ng/functions/parse-browser-build-options';
 import { sameTargets } from '../../../ng/functions/same-targets';
 import { toNgBuildOptions } from '../../shared/functions/to-ng-build-options';
 import { DevkitContext } from '../../shared/types/devkit-context';
-import { ServeOptions } from '../../shared/types/options-serve';
 
 export function overwriteTsConfigPath(
-  options: ServeOptions,
+  options: DevServerBuilderOptions,
   serveContext: DevkitContext,
   context: BuilderContext
 ) {

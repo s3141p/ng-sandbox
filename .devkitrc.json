@@ -1,0 +1,9 @@
+{
+  "libs": [
+    {
+      "libName": "mock-ui-kit",
+      "tsConfig": "libs/mock/ui-kit/tsconfig.lib.json",
+      "discoveryPath": "discovery.ts"
+    }
+  ]
+}

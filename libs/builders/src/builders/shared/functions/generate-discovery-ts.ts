@@ -12,7 +12,7 @@ function generateImport(libName: string, index) {
 }
 
 function generateExport(libs: LibDescriptor[]) {
-  const result = [];
+  const result: string[] = [];
   result.push(`export const libraries = [\n`);
 
   for (let i = 0; i < libs.length; i++) {

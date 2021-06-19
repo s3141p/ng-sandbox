@@ -9,7 +9,6 @@ export function resolveTsConfig(configPath: string): TsConfigWithBaseUrl {
   const readResult = ts.readConfigFile(configPath, ts.sys.readFile);
 
   if (readResult.error) {
-    console.log(configPath);
     throw 'Unexpected error during tsconfig.json generation';
   }
 

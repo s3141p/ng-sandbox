@@ -7,27 +7,6 @@
     "targetLib": {
       "type": "string",
       "alias": "l"
-    }, 
-    "libs": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "libName": {
-            "type": "string"
-          },
-          "discoveryPath": {
-            "type": "string",
-            "default": "discovery.ts",
-            "description": "Path should be related to the sourceRoot options"
-          },
-          "tsConfig": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": false,
-        "required": ["libName", "tsConfig"]
-      }
     },
     "assets": {
       "type": "array",
@@ -496,7 +475,15 @@
         "type": {
           "type": "string",
           "description": "The type of budget.",
-          "enum": ["all", "allScript", "any", "anyScript", "anyComponentStyle", "bundle", "initial"]
+          "enum": [
+            "all",
+            "allScript",
+            "any",
+            "anyScript",
+            "anyComponentStyle",
+            "bundle",
+            "initial"
+          ]
         },
         "name": {
           "type": "string",

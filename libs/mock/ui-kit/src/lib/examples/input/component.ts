@@ -8,5 +8,8 @@ export const InputComponentDescriptor: ComponentDescriptor = {
   name: 'InputComponent',
   component: InputComponent,
   componentModule: InputComponentModule,
-  examples: [InputComponentPropsExample, InputComponentExample],
+  examples: [
+    InputComponentPropsExample,
+    InputComponentExample,
+  ],
 };

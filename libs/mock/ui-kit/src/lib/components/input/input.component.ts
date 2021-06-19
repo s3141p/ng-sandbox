@@ -4,7 +4,6 @@ import {
   Input,
   Output,
   EventEmitter,
-  OnInit,
 } from '@angular/core';
 
 @Component({
@@ -13,9 +12,7 @@ import {
   styleUrls: ['./input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputComponent implements OnInit {
-  @Input() data: string = '';
+export class InputComponent {
+  @Input() data = '';
   @Output() out = new EventEmitter<string>();
-
-  ngOnInit() {}
 }

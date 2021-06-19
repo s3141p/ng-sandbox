@@ -1,32 +1,35 @@
-import { ProjectMetadata } from '../../../ng/types/project-metadata';
 import { LibDescriptor } from '../types/lib-descriptor';
 import { TargetLib } from '../types/target-lib';
 import { LibOptions } from '../types/lib-options';
+import { LibMetadata } from '../../../ng/types/lib-metadata';
 
 export function parseLibDescriptors(
   options: LibOptions[],
-  meta: ProjectMetadata[],
-  lib?: TargetLib
+  meta: LibMetadata[],
+  targetLib?: TargetLib
 ) {
-  if (options.length !== meta.length) {
-    throw "Options and meta don't match";
-  }
+  const descriptors = options.map((item, i) => toDescriptor(item, meta[i]));
 
-  const descriptors = options.map((item, i) => ({ ...item, ...meta[i] }));
-
-  if (lib === 'all') {
+  if (targetLib === 'all') {
     return descriptors;
   }
 
-  if (Array.isArray(lib)) {
-    return lib.map((name) => pickDescriptor(name, descriptors));
+  if (Array.isArray(targetLib)) {
+    return targetLib.map((name) => pickDescriptor(name, descriptors));
   }
 
-  if (lib) {
-    return [pickDescriptor(lib, descriptors)];
+  if (targetLib) {
+    return [pickDescriptor(targetLib, descriptors)];
   }
 
   return [];
+}
+
+function toDescriptor(option: LibOptions, meta: LibMetadata): LibDescriptor {
+  return {
+    ...option,
+    ...meta,
+  };
 }
 
 function pickDescriptor(libName: string, descirptors: LibDescriptor[]) {

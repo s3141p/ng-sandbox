@@ -52,7 +52,7 @@ export function generateDiscoveryTsConfig(
   }
 
   ['outDir', 'rootDir'].forEach((key) => {
-    delete discoveryConfig.compilerOptions[key];
+    delete discoveryConfig.compilerOptions?.[key];
   });
 
   return discoveryConfig;

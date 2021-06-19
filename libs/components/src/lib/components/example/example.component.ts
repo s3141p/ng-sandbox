@@ -7,10 +7,8 @@ import { ExampleDescriptor } from '../../types';
   templateUrl: './example.component.html',
   styleUrls: ['./example.component.scss'],
 })
-export class ExampleComponent implements OnInit {
+export class ExampleComponent {
   @Input() example!: ExampleDescriptor;
   @Input() component?: new (...args: unknown[]) => unknown;
   @Input() componentModule?: new (...args: unknown[]) => unknown;
-
-  ngOnInit(): void {}
 }

@@ -50,13 +50,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "apps/app/src/styles.scss"
             ],
-            "scripts": [],
-            "libs": [
-              {
-                "libName": "mock-ui-kit",
-                "tsConfig": "libs/mock/ui-kit/tsconfig.lib.json"
-              }
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -114,14 +108,6 @@
             }
           },
           "defaultConfiguration": "development"
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/app"],
-          "options": {
-            "jestConfig": "apps/app/jest.config.js",
-            "passWithNoTests": true
-          }
         }
       }
     },
