@@ -3,11 +3,12 @@
 # Prerequisites
 
 1. Nodejs v14.15.1
-2. Familarity with [`nx cli`](https://nx.dev/)
+2. `npm i -g @nrwl/cli` (Optional). Otherwise `nx` should be replaced with `npm run nx`
 
 # Run app locally
 
-`npm run nx serve app -- --l=all`
+1. `nx build builders`
+2. `nx serve app -- --l=all`
 
 # Running unit tests
 
