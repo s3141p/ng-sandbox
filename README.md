@@ -1,3 +1,5 @@
+![Integration](https://github.com/s3141p/ui-devkit/actions/workflows/main.yml/badge.svg)
+
 # Ui devkit
 
 # Prerequisites
