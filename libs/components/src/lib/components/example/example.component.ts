@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { ExampleDescriptor } from '../../types';
 
@@ -10,5 +10,4 @@ import { ExampleDescriptor } from '../../types';
 export class ExampleComponent {
   @Input() example!: ExampleDescriptor;
   @Input() component?: new (...args: unknown[]) => unknown;
-  @Input() componentModule?: new (...args: unknown[]) => unknown;
 }

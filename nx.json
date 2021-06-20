@@ -28,7 +28,7 @@
     "builders": {
       "tags": []
     },
-    "mock-ui-kit": {
+    "examples-material": {
       "tags": []
     }
   }

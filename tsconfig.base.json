@@ -19,7 +19,7 @@
       "@devkit/discovery": ["apps/app/src/discovery.ts"],
       "@devkit/components": ["libs/components/src/index.ts"],
       "@devkit/builders": ["libs/builders/src/index.ts"],
-      "@devkit/mock/ui-kit": ["libs/mock/ui-kit/src/index.ts"]
+      "@devkit/examples-material": ["libs/examples-material/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

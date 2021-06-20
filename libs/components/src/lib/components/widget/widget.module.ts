@@ -7,8 +7,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 
-import { PropsPreviewModule } from '../props-preview/props-preview.module';
-import { ComponentPreviewModule } from '../component-preview/component-preview.module';
 import { WidgetComponent } from './widget.component';
 import { ExampleModule } from '../example/example.module';
 
@@ -21,8 +19,6 @@ import { ExampleModule } from '../example/example.module';
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
-    PropsPreviewModule,
-    ComponentPreviewModule,
     ExampleModule,
   ],
   declarations: [WidgetComponent],

@@ -1,3 +1,3 @@
-# mock-ui-kit
+# examples-material
 
 This library was generated with [Nx](https://nx.dev).
