@@ -1,8 +1,8 @@
 {
   "libs": [
     {
-      "libName": "mock-ui-kit",
-      "tsConfig": "libs/mock/ui-kit/tsconfig.lib.json",
+      "libName": "examples-material",
+      "tsConfig": "libs/examples-material/tsconfig.lib.json",
       "discoveryPath": "discovery.ts"
     }
   ]

@@ -192,18 +192,18 @@
         }
       }
     },
-    "mock-ui-kit": {
+    "examples-material": {
       "projectType": "library",
-      "root": "libs/mock/ui-kit",
-      "sourceRoot": "libs/mock/ui-kit/src",
+      "root": "libs/examples-material",
+      "sourceRoot": "libs/examples-material/src",
       "prefix": "devkit",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/mock/ui-kit/src/**/*.ts",
-              "libs/mock/ui-kit/src/**/*.html"
+              "libs/examples-material/src/**/*.ts",
+              "libs/examples-material/src/**/*.html"
             ]
           }
         }
