@@ -15,8 +15,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "@devkit/mock/libB": ["libs/mock/libB/src/index.ts"],
-      "@devkit/discovery": ["apps/app/src/discovery.ts"],
+      "@devkit/discovery": ["apps/devkit/src/discovery.ts"],
       "@devkit/components": ["libs/components/src/index.ts"],
       "@devkit/builders": ["libs/builders/src/index.ts"],
       "@devkit/examples-material": ["libs/examples-material/src/index.ts"]
