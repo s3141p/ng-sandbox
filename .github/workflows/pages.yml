@@ -16,10 +16,10 @@ jobs:
         run: |
           npm install
           npm run nx build builders
-          npm run nx build app -- --l=all --deploy-url ui-devkit/
+          npm run nx build devkit -- --l=all --deploy-url ui-devkit/
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages 
-          folder: dist/apps/app 
+          folder: dist/apps/devkit 
