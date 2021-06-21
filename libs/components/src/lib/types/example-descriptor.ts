@@ -3,12 +3,12 @@ export interface ExampleInput {
 }
 
 export interface ExampleOutput {
-  [key: string]: (...args: unknown[]) => void;
+  [key: string]: (...args: any[]) => void;
 }
 
 export interface ExampleDescriptor {
   name: string;
   output?: ExampleOutput;
   input?: ExampleInput;
-  component?: new (...args: unknown[]) => unknown;
+  component?: new (...args: any[]) => unknown;
 }

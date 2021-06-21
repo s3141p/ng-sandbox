@@ -1,4 +1,8 @@
-import { ComponentFactoryResolver, OnDestroy } from '@angular/core';
+import {
+  ComponentFactoryResolver,
+  NgModuleRef,
+  OnDestroy,
+} from '@angular/core';
 import {
   Component,
   Input,
@@ -25,6 +29,7 @@ export class ComponentPreviewComponent implements OnInit, OnDestroy {
   vc!: ViewContainerRef;
 
   @Input() example!: ExampleDescriptor;
+  @Input() moduleRef!: NgModuleRef<unknown>;
   @Input() component!: new (...args: unknown[]) => any;
 
   destroy = new Subject<null>();
@@ -43,9 +48,16 @@ export class ComponentPreviewComponent implements OnInit, OnDestroy {
   }
 
   private initComponent() {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      this.example.component || this.component
+    const component = this.example.component || this.component;
+
+    if (!component) {
+      return;
+    }
+
+    const componentFactory = this.moduleRef.componentFactoryResolver.resolveComponentFactory(
+      component
     );
+
     const { instance } = this.vc.createComponent(componentFactory);
 
     this.initInput(instance, this.example.input);

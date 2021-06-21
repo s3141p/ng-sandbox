@@ -12,7 +12,7 @@
 ### Run app locally
 
 1. `nx build builders`
-2. `nx serve app -- --l=all`
+2. `nx serve devkit -- --l=all`
 
 ### Running unit tests
 

@@ -5,12 +5,12 @@ import { ComponentDescriptor } from '@devkit/components';
 import { CustomErrorStateExample } from './custom-error-state-matcher';
 import { InputFormExampleDescriptor } from './in-a-form/component';
 import { WithClearButtonExample } from './with-clear-button';
-import { MaterialInputDependenciesModule } from './dependencies';
+import { InputDependenciesModule } from './dependencies';
 
-export const MaterialInputComponentDescriptor: ComponentDescriptor = {
+export const InputComponentDescriptor: ComponentDescriptor = {
   name: 'Input',
   component: MatInput,
-  moduleWithDependencies: MaterialInputDependenciesModule,
+  moduleWithDependencies: InputDependenciesModule,
   examples: [
     WithClearButtonExample,
     CustomErrorStateExample,

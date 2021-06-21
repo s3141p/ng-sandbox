@@ -19,9 +19,6 @@
     }
   },
   "projects": {
-    "app": {
-      "tags": []
-    },
     "components": {
       "tags": []
     },
@@ -29,6 +26,9 @@
       "tags": []
     },
     "examples-material": {
+      "tags": []
+    },
+    "devkit": {
       "tags": []
     }
   }
