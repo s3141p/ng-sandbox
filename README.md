@@ -14,7 +14,7 @@ How usage looks like? Briefly:
 
 So, there is no extra webpack configs and it's not framework.
 
-For example there is such [library](https://github.com/s3141p/ui-devkit/tree/master/libs/examples-material) which is rendered at [github pages] (https://s3141p.github.io/ui-devkit/)
+For example there is such [library](https://github.com/s3141p/ui-devkit/tree/master/libs/examples-material) which is rendered at [github pages](https://s3141p.github.io/ui-devkit/)
 
 ## Links
 
