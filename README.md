@@ -1,23 +1,22 @@
 ![Integration](https://github.com/s3141p/ui-devkit/actions/workflows/main.yml/badge.svg)
 
-# Ui devkit
+# Ui Devkit
 
-## Development
+It's thin wrapper over default angular builders and widget which renders your components.
 
-### Prerequisites
+How usage looks like? Briefly:
 
-1. Nodejs v14.15.1
-2. `npm i -g @nrwl/cli` (Optional). Otherwise `nx` should be replaced with `npm run nx`
+1. Create an angular application inside of your project
+2. Replace default builders for `serve` and `build`
+3. Add few typescript files
+4. Add widget to the created application
+5. Use `ng serve(build) --l=*libName*`
 
-### Run app locally
+So, there is no extra webpack configs and it's not framework.
 
-1. `nx build builders`
-2. `nx serve devkit -- --l=all`
+For example there is such [library](https://github.com/s3141p/ui-devkit/tree/master/libs/examples-material) which is rendered at [github pages] (https://s3141p.github.io/ui-devkit/)
 
-### Running unit tests
+## Links
 
-`npm run nx test *libName*`
-
-### Running lint
-
-`npm run nx lint *libName*`
+1. [Usage](./docs/usage.md)
+2. [Development](./docs/development.md)
