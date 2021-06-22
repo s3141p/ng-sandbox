@@ -33,8 +33,9 @@
     <div class="examples">
       <ng-container *ngFor="let example of currentComponent?.examples">
         <devkit-example
+          *ngIf="currentComponent"
           [example]="example"
-          [moduleWithDependencies]="currentComponent?.moduleWithDependencies"
+          [moduleWithDependencies]="currentComponent.moduleWithDependencies"
           [component]="currentComponent?.component"
         ></devkit-example>
       </ng-container>
