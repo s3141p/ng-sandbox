@@ -30,7 +30,7 @@ export class ComponentPreviewComponent implements OnInit, OnDestroy {
 
   @Input() example!: ExampleDescriptor;
   @Input() moduleRef!: NgModuleRef<unknown>;
-  @Input() component!: new (...args: unknown[]) => any;
+  @Input() component?: new (...args: unknown[]) => any;
 
   destroy = new Subject<null>();
 
