@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "ui-devkit-ng-add",
+  "title": "Ui-devkit library schematic",
+  "type": "object",
+  "properties": {
+    "library": {
+      "type": "string",
+      "description": "Name of the library to render",
+      "x-prompt": "Name of the library to render"
+    }
+  },
+  "required": ["library"]
+}

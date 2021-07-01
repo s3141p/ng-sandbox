@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "ui-devkit-ng-add",
+  "title": "Ui-devkit ng-add schematic",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Name of the project.",
+      "default": "devkit",
+      "x-prompt": "Name of the project"
+    },
+    "projectRoot": {
+      "type": "string",
+      "description": "The directory of new project",
+      "default": "./",
+      "x-prompt": "The directory of new project"
+    },
+    "style": {
+      "description": "The file extension or preprocessor to use for style files.",
+      "type": "string",
+      "default": "css",
+      "enum": ["css", "scss", "sass", "less"],
+      "x-prompt": {
+        "message": "Which stylesheet format would you like to use?",
+        "type": "list",
+        "items": [
+          { "value": "css", "label": "CSS" },
+          {
+            "value": "scss",
+            "label": "SCSS   [ https://sass-lang.com/documentation/syntax#scss                ]"
+          },
+          {
+            "value": "sass",
+            "label": "Sass   [ https://sass-lang.com/documentation/syntax#the-indented-syntax ]"
+          },
+          {
+            "value": "less",
+            "label": "Less   [ http://lesscss.org                                             ]"
+          }
+        ]
+      }
+    }
+  },
+  "required": ["project", "projectRoot", "style"]
+}

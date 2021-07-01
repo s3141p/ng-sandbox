@@ -1,0 +1,3 @@
+import {LibraryDescriptor} from '@ui-devkit/components';
+
+export const libraries: LibraryDescriptor[] = [];

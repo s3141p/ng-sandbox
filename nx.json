@@ -22,13 +22,13 @@
     "components": {
       "tags": []
     },
-    "builders": {
-      "tags": []
-    },
     "examples-material": {
       "tags": []
     },
     "devkit": {
+      "tags": []
+    },
+    "setup": {
       "tags": []
     }
   }
