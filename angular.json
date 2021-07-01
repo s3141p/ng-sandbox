@@ -61,55 +61,6 @@
         }
       }
     },
-    "builders": {
-      "root": "libs/builders",
-      "sourceRoot": "libs/builders/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/builders/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/builders"],
-          "options": {
-            "jestConfig": "libs/builders/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/libs/builders",
-            "tsConfig": "libs/builders/tsconfig.lib.json",
-            "packageJson": "libs/builders/package.json",
-            "main": "libs/builders/src/index.ts",
-            "assets": [
-              "libs/builders/*.md",
-              {
-                "input": "./libs/builders/src",
-                "glob": "**/!(*.ts)",
-                "output": "./src"
-              },
-              {
-                "input": "./libs/builders/src",
-                "glob": "**/*.d.ts",
-                "output": "./src"
-              },
-              {
-                "input": "./libs/builders",
-                "glob": "builders.json",
-                "output": "."
-              }
-            ]
-          }
-        }
-      }
-    },
     "examples-material": {
       "projectType": "library",
       "root": "libs/examples-material",
@@ -134,7 +85,7 @@
       "prefix": "devkit",
       "architect": {
         "build": {
-          "builder": "./dist/libs/builders:build",
+          "builder": "./dist/libs/setup:build",
           "options": {
             "aot": true,
             "outputPath": "dist/apps/devkit",
@@ -199,13 +150,67 @@
           }
         },
         "serve": {
-          "builder": "./dist/libs/builders:serve",
+          "builder": "./dist/libs/setup:serve",
           "configurations": {
             "development": {
               "browserTarget": "devkit:build:development"
             }
           },
           "defaultConfiguration": "development"
+        }
+      }
+    },
+    "setup": {
+      "root": "libs/setup",
+      "sourceRoot": "libs/setup/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/setup",
+            "tsConfig": "libs/setup/tsconfig.lib.json",
+            "packageJson": "libs/setup/package.json",
+            "main": "libs/setup/src/index.ts",
+            "assets": [
+              "libs/setup/*.md",
+              {
+                "input": "./libs/setup/src",
+                "glob": "**/!(*.ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/setup/src",
+                "glob": "**/*.d.ts",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/setup",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/setup",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/setup/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/setup"],
+          "options": {
+            "jestConfig": "libs/setup/jest.config.js",
+            "passWithNoTests": true
+          }
         }
       }
     }

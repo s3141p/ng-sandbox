@@ -1,0 +1,20 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Add library to the project.",
+      "factory": "./src/lib/schematics/ng-add/index#ngAdd",
+      "schema": "./src/lib/schematics/ng-add/schema.json"
+    },
+    "ng-add-setup-project": {
+      "description": "Sets up the specified project after the ng-add dependencies have been installed.",
+      "factory": "./src/lib/schematics/ng-add/project-setup",
+      "schema": "./src/lib/schematics/ng-add/schema.json"
+    },
+    "library": {
+      "description": "Add library to ng-preview",
+      "factory": "./src/lib/schematics/ng-generate/library/index#library",
+      "schema": "./src/lib/schematics/ng-generate/library/schema.json"
+    }
+  }
+}

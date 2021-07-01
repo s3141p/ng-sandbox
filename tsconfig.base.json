@@ -18,7 +18,10 @@
       "@devkit/discovery": ["apps/devkit/src/discovery.ts"],
       "@devkit/components": ["libs/components/src/index.ts"],
       "@devkit/builders": ["libs/builders/src/index.ts"],
-      "@devkit/examples-material": ["libs/examples-material/src/index.ts"]
+      "@devkit/examples-material": ["libs/examples-material/src/index.ts"],
+      "@devkit/schematics": ["libs/schematics/src/index.ts"],
+      "@devkit/typescript": ["libs/typescript/src/index.ts"],
+      "@ng-sandbox/setup": ["libs/setup/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
