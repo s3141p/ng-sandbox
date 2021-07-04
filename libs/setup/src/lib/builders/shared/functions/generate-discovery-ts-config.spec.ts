@@ -19,7 +19,7 @@ describe('generateDiscoveryTsConfig', () => {
         compilerOptions: {
           baseUrl: '.',
           paths: {
-            '@devkit/discovery': ['./src/discovery.ts'],
+            '@ng-sandbox/discovery': ['./src/discovery.ts'],
           },
         },
         files: ['src/main.ts', 'src/polyfills.ts'],
@@ -59,7 +59,7 @@ describe('generateDiscoveryTsConfig', () => {
         paths: {
           '@libB': ['../libs/libB/src/index.ts'],
           '@discovery/libA': ['../libs/libA/src/discovery.ts'],
-          '@devkit/discovery': ['discovery.ts'],
+          '@ng-sandbox/discovery': ['discovery.ts'],
         },
       },
       include: ['../apps/app/src/**/*.d.ts'],
@@ -73,7 +73,7 @@ describe('generateDiscoveryTsConfig', () => {
         compilerOptions: {
           baseUrl: '.',
           paths: {
-            '@devkit/discovery': ['./src/discovery.ts'],
+            '@ng-sandbox/discovery': ['./src/discovery.ts'],
             '@libB': ['../../libs/libB/src/index.ts'],
             '@libC': ['../../libs/libC/src/index.ts'],
           },
@@ -118,7 +118,7 @@ describe('generateDiscoveryTsConfig', () => {
           '@libC': ['../libs/libC/src/index.ts'],
           '@libD': ['../libs/libD/src/index.ts'],
           '@discovery/libA': ['../libs/libA/src/discovery.ts'],
-          '@devkit/discovery': ['discovery.ts'],
+          '@ng-sandbox/discovery': ['discovery.ts'],
         },
       },
       include: ['../apps/app/src/**/*.d.ts'],
@@ -148,7 +148,7 @@ describe('generateDiscoveryTsConfig', () => {
           noImplicitReturns: true,
           noFallthroughCasesInSwitch: true,
           paths: {
-            '@devkit/discovery': ['./src/discovery.ts'],
+            '@ng-sandbox/discovery': ['./src/discovery.ts'],
             '@libB': ['../../libs/libB/src/index.ts'],
             '@libC': ['../../libs/libC/src/index.ts'],
           },
@@ -213,7 +213,7 @@ describe('generateDiscoveryTsConfig', () => {
           '@libC': ['../libs/libC/src/index.ts'],
           '@libD': ['../libs/libD/src/index.ts'],
           '@discovery/libA': ['../libs/libA/src/discovery.ts'],
-          '@devkit/discovery': ['discovery.ts'],
+          '@ng-sandbox/discovery': ['discovery.ts'],
         },
       },
       angularCompilerOptions: {

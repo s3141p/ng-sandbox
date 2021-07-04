@@ -1,5 +1,5 @@
 {
-  "name": "@ui-devkit/components",
+  "name": "@ng-sandbox/components",
   "version": "0.0.0",
   "peerDependencies": {
     "@angular/common": "^12.0.3",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/s3141p/ui-devkit.git"
+    "url": "https://github.com/s3141p/ng-sandbox.git"
   },
   "dependencies": {
     "tslib": "^2.1.0"

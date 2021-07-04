@@ -45,11 +45,11 @@ $toolbarHeight: 64px;
   padding: 20px;
 }
 
-devkit-example {
+ng-sandbox-example {
   width: 100%;
   max-width: 820px;
 }
 
-devkit-example:not(:first-child) {
+ng-sandbox-example:not(:first-child) {
   margin-top: 20px;
 }

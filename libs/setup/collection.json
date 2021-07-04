@@ -12,7 +12,7 @@
       "schema": "./src/lib/schematics/ng-add/schema.json"
     },
     "library": {
-      "description": "Add library to ng-preview",
+      "description": "Add library to ng-sandbox",
       "factory": "./src/lib/schematics/ng-generate/library/index#library",
       "schema": "./src/lib/schematics/ng-generate/library/schema.json"
     }

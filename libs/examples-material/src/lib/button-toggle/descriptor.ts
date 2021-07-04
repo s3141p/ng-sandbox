@@ -1,4 +1,4 @@
-import { ComponentDescriptor } from '@devkit/components';
+import { ComponentDescriptor } from '@ng-sandbox/components';
 
 import { ButtonToggleAppearenceDescriptor } from './appearence/component';
 import { ButtonToggleDependenciesModule } from './dependencies';

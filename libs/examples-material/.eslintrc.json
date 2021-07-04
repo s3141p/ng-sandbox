@@ -16,7 +16,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "devkit",
+            "prefix": "ng-sandbox",
             "style": "camelCase"
           }
         ],
@@ -24,7 +24,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "devkit",
+            "prefix": "ng-sandbox",
             "style": "kebab-case"
           }
         ]

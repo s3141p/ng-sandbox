@@ -36,7 +36,7 @@ export function generateDiscoveryTsConfig(
     ...libsPaths,
     ...(appConfig.compilerOptions?.paths || {}),
     ...libsDiscoveryPath,
-    '@devkit/discovery': ['discovery.ts'],
+    '@ng-sandbox/discovery': ['discovery.ts'],
   };
 
   const discoveryConfig: TsConfig = {

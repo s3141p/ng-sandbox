@@ -1,6 +1,6 @@
-![Integration](https://github.com/s3141p/ui-devkit/actions/workflows/main.yml/badge.svg)
+![Integration](https://github.com/s3141p/ng-sandbox/actions/workflows/main.yml/badge.svg)
 
-# Ui Devkit
+# Ng Sandbox
 
 It's thin wrapper over default angular builders and widget which renders your components.
 
@@ -14,5 +14,4 @@ How usage looks like? Briefly:
 
 So, there is no extra webpack configs and it's not framework.
 
-For example there is such [library](https://github.com/s3141p/ui-devkit/tree/master/libs/examples-material) which is rendered at [github pages](https://s3141p.github.io/ui-devkit/)
- 
+For example there is such [library](https://github.com/s3141p/ng-sandbox/tree/master/libs/examples-material) which is rendered at [github pages](https://s3141p.github.io/ng-sandbox/)

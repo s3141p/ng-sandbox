@@ -1,6 +1,6 @@
 import { MatInput } from '@angular/material/input';
 
-import { ComponentDescriptor } from '@devkit/components';
+import { ComponentDescriptor } from '@ng-sandbox/components';
 
 import { CustomErrorStateExample } from './custom-error-state-matcher';
 import { InputFormExampleDescriptor } from './in-a-form/component';

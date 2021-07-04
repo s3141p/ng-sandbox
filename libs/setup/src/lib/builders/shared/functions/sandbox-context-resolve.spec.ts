@@ -2,22 +2,22 @@ import * as fs from 'fs';
 import { BrowserBuilderOptions } from '@angular-devkit/build-angular';
 import { BuilderContext } from '@angular-devkit/architect';
 
-import { resolveDevkitContext } from './devkit-context-resolve';
-import { parseDevkitContext } from './devkit-context-parse';
-import { Devkitrc } from '../types/devkitrc';
+import { resolveSandboxContext } from './sandbox-context-resolve';
+import { parseSandboxContext } from './sandbox-context-parse';
+import { Sandboxrc } from '../types/sandbox';
 import { AppMetadata } from '../../ng/types/app-metadata';
 import { LibMetadata } from '../../ng/types/lib-metadata';
 
-jest.mock('./devkit-context-parse');
+jest.mock('./sandbox-context-parse');
 
-fdescribe('resolveDevkitContext', () => {
+fdescribe('resolveSandboxContext', () => {
   const targetLib = 'core-ui-kit';
   const discoveryFolder = 'tmp';
 
   const buildOptions = { aot: true } as BrowserBuilderOptions;
   const mockRead = jest.spyOn(fs.promises, 'readFile');
-  const mockParse = parseDevkitContext as jest.MockedFunction<
-    typeof parseDevkitContext
+  const mockParse = parseSandboxContext as jest.MockedFunction<
+    typeof parseSandboxContext
   >;
   let mockMetadata: jest.MockedFunction<BuilderContext['getProjectMetadata']>;
   let mockLogError: jest.MockedFunction<BuilderContext['logger']['error']>;
@@ -35,9 +35,9 @@ fdescribe('resolveDevkitContext', () => {
     } as any;
   });
 
-  describe('read .devkitrc', () => {
+  describe('read .ng-sandboxrc', () => {
     describe('success', () => {
-      const validDevkitrc: Devkitrc = {
+      const validSandboxrc: Sandboxrc = {
         libs: [
           {
             libName: 'core-ui-kit',
@@ -54,7 +54,7 @@ fdescribe('resolveDevkitContext', () => {
 
       beforeEach(() => {
         mockRead.mockImplementationOnce(() => {
-          return Promise.resolve(JSON.stringify(validDevkitrc));
+          return Promise.resolve(JSON.stringify(validSandboxrc));
         });
       });
 
@@ -96,7 +96,7 @@ fdescribe('resolveDevkitContext', () => {
             expect.assertions(1);
 
             try {
-              await resolveDevkitContext(
+              await resolveSandboxContext(
                 buildOptions,
                 builderContext,
                 discoveryFolder,
@@ -108,7 +108,7 @@ fdescribe('resolveDevkitContext', () => {
 
             expect(mockParse).toHaveBeenCalledWith(
               'app',
-              validDevkitrc,
+              validSandboxrc,
               buildOptions,
               validAppMetadata,
               [validCoreUiKitMetadata, validCoreComponentsMetadata],
@@ -131,7 +131,7 @@ fdescribe('resolveDevkitContext', () => {
             expect.assertions(2);
 
             try {
-              await resolveDevkitContext(
+              await resolveSandboxContext(
                 buildOptions,
                 builderContext,
                 discoveryFolder,
@@ -157,7 +157,7 @@ fdescribe('resolveDevkitContext', () => {
             expect.assertions(5);
 
             try {
-              await resolveDevkitContext(
+              await resolveSandboxContext(
                 buildOptions,
                 builderContext,
                 discoveryFolder,
@@ -187,11 +187,11 @@ fdescribe('resolveDevkitContext', () => {
         });
       });
 
-      it('should log devkitrc validation errors', async () => {
+      it('should log sandboxrc validation errors', async () => {
         expect.assertions(2);
 
         try {
-          await resolveDevkitContext(
+          await resolveSandboxContext(
             buildOptions,
             builderContext,
             discoveryFolder,
@@ -203,7 +203,7 @@ fdescribe('resolveDevkitContext', () => {
 
         expect(mockLogError).toHaveBeenNthCalledWith(
           1,
-          'Invalid .devkitrc.json:'
+          'Invalid .ng-sandboxrc.json:'
         );
       });
     });

@@ -3,12 +3,12 @@
     "serve": {
       "implementation": "./src/lib/builders/serve/index",
       "schema": "./src/lib/builders/serve/schema.json",
-      "description": "@ui-devkit serve"
+      "description": "ng-sandbox serve"
     },
     "build": {
       "implementation": "./src/lib/builders/build/index",
       "schema": "./src/lib/builders/build/schema.json",
-      "description": "@ui-devkit build"
+      "description": "ng-sandbox build"
     }
   }
 }

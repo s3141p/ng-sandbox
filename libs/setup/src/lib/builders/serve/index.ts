@@ -13,7 +13,7 @@ import { generateTsConfig } from '../shared/functions/generate-discovery-items';
 import { generateDiscoveryTs } from '../shared/functions/generate-discovery-ts';
 
 import { writeDiscoveryFilesAndClear } from '../shared/functions/save-ts-config';
-import { resolveDevkitContext } from '../shared/functions/devkit-context-resolve';
+import { resolveSandboxContext } from '../shared/functions/devkit-context-resolve';
 import { BuilderExecutor } from '../shared/types/builder-executor';
 import { ServeOptions } from '../shared/types/options-serve';
 import { overwriteTsConfigPath } from './functions/overwrite-ts-config-path';
@@ -31,24 +31,24 @@ const execute = (
   return context
     .getTargetOptions(browserTarget)
     .then((buildOptions) =>
-      resolveDevkitContext(
+      resolveSandboxContext(
         (buildOptions as unknown) as BrowserBuilderOptions,
         context,
         'tmp',
         targetLib
       )
     )
-    .then((devkitContext) => {
-      overwriteTsConfigPath(options, devkitContext, context);
+    .then((sandboxContext) => {
+      overwriteTsConfigPath(options, sandboxContext, context);
 
-      const tsConfig = generateTsConfig(devkitContext);
-      const discoveryTs = generateDiscoveryTs(devkitContext.libsDescriptors);
+      const tsConfig = generateTsConfig(sandboxContext);
+      const discoveryTs = generateDiscoveryTs(sandboxContext.libsDescriptors);
 
       writeDiscoveryFilesAndClear(
         tsConfig,
         discoveryTs,
-        devkitContext.discoveryConfigPath,
-        devkitContext.discoveryTsPath
+        sandboxContext.discoveryConfigPath,
+        sandboxContext.discoveryTsPath
       );
 
       return executebBuilder(options, context).toPromise();

@@ -5,18 +5,18 @@ import { BuilderContext } from '@angular-devkit/architect';
 import { BrowserBuilderOptions } from '@angular-devkit/build-angular';
 
 import { TargetLib } from '../../shared/types/target-lib';
-import { Devkitrc, devkitrcValidator } from '../types/devkitrc';
-import { DevkitContext } from '../types/devkit-context';
+import { Sandboxrc, sandboxrcValidator } from '../types/sandbox';
+import { SandboxContext } from '../types/sandbox-context';
 import { appMetadataValidator } from '../../ng/types/app-metadata';
 import { libMetadataValidator } from '../../ng/types/lib-metadata';
-import { parseDevkitContext } from './devkit-context-parse';
+import { parseSandboxContext } from './sandbox-context-parse';
 
-export function resolveDevkitContext(
+export function resolveSandboxContext(
   buildOptions: BrowserBuilderOptions,
   context: BuilderContext,
   discoveryFolder: string,
   targetLib?: TargetLib
-): Promise<DevkitContext> {
+): Promise<SandboxContext> {
   const { logger } = context;
 
   if (!context.target) {
@@ -29,35 +29,35 @@ export function resolveDevkitContext(
   }
 
   const projectName = context.target.project;
-  const devkitrc = promises.readFile(join(cwd(), '.devkitrc.json'), {
+  const sandboxrc = promises.readFile(join(cwd(), '.ng-sandboxrc.json'), {
     encoding: 'utf8',
   });
 
-  return devkitrc
+  return sandboxrc
     .then((file) => JSON.parse(file))
     .then((json) => {
-      if (!devkitrcValidator(json)) {
-        logger.error('Invalid .devkitrc.json:');
-        logger.error(JSON.stringify(devkitrcValidator.errors));
+      if (!sandboxrcValidator(json)) {
+        logger.error('Invalid .ng-sandboxrc.json:');
+        logger.error(JSON.stringify(sandboxrcValidator.errors));
 
         throw '';
       }
 
       return json;
     })
-    .then((devkitrc: Devkitrc) => {
+    .then((sandboxrc: Sandboxrc) => {
       const appMeta = context.getProjectMetadata(projectName);
-      const libsMeta = devkitrc.libs.map((lib) =>
+      const libsMeta = sandboxrc.libs.map((lib) =>
         context.getProjectMetadata(lib.libName)
       );
 
       return Promise.all([
-        Promise.resolve(devkitrc),
+        Promise.resolve(sandboxrc),
         appMeta,
         Promise.all(libsMeta),
       ]);
     })
-    .then(([devkitrc, appMeta, libs]) => {
+    .then(([sandboxrc, appMeta, libs]) => {
       if (!appMetadataValidator(appMeta)) {
         logger.error('Invalid application metadata:');
         logger.error(JSON.stringify(appMetadataValidator.errors));
@@ -75,9 +75,9 @@ export function resolveDevkitContext(
         return item;
       });
 
-      return parseDevkitContext(
+      return parseSandboxContext(
         projectName,
-        devkitrc,
+        sandboxrc,
         buildOptions,
         appMeta,
         libsMeta,

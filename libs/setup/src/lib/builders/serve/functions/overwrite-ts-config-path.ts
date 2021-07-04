@@ -8,11 +8,11 @@ import { JsonObject } from '@angular-devkit/core';
 import { isBuildOptions } from '../../ng/functions/parse-browser-build-options';
 import { sameTargets } from '../../ng/functions/same-targets';
 import { toNgBuildOptions } from '../../shared/functions/to-ng-build-options';
-import { DevkitContext } from '../../shared/types/devkit-context';
+import { SandboxContext } from '../../shared/types/sandbox-context';
 
 export function overwriteTsConfigPath(
   options: DevServerBuilderOptions,
-  serveContext: DevkitContext,
+  serveContext: SandboxContext,
   context: BuilderContext
 ) {
   const browserTarget = targetFromTargetString(options.browserTarget);

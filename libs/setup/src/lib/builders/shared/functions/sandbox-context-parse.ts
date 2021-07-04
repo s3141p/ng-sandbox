@@ -4,24 +4,24 @@ import { BrowserBuilderOptions } from '@angular-devkit/build-angular';
 import { AppMetadata } from '../../ng/types/app-metadata';
 import { generateDiscoveryTsConfigPath } from '../../shared/functions/generate-discovery-config-name';
 import { parseLibDescriptors } from '../../shared/functions/parse-lib-descriptor';
-import { DevkitContext } from '../types/devkit-context';
+import { SandboxContext } from '../types/sandbox-context';
 import { TargetLib } from '../../shared/types/target-lib';
-import { Devkitrc } from '../types/devkitrc';
+import { Sandboxrc } from '../types/sandbox';
 import { LibMetadata } from '../../ng/types/lib-metadata';
 
-export function parseDevkitContext(
+export function parseSandboxContext(
   projectName: string,
-  devkitrc: Devkitrc,
+  sandboxrc: Sandboxrc,
   buildOptions: BrowserBuilderOptions,
   appMeta: AppMetadata,
   libsMeta: LibMetadata[],
   discoveryFolder: string,
   targetLib?: TargetLib
-): DevkitContext {
+): SandboxContext {
   return {
     buildOptions,
     appMeta,
-    libsDescriptors: parseLibDescriptors(devkitrc.libs, libsMeta, targetLib),
+    libsDescriptors: parseLibDescriptors(sandboxrc.libs, libsMeta, targetLib),
     discoveryFolder: discoveryFolder,
     discoveryTsPath: join(discoveryFolder, 'discovery.ts'),
     discoveryConfigPath: generateDiscoveryTsConfigPath(

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ExampleDescriptor } from '@devkit/components';
+import { ExampleDescriptor } from '@ng-sandbox/components';
 
 @Component({
-  selector: 'devkit-input-in-a-form',
+  selector: 'ng-sandbox-input-in-a-form',
   templateUrl: '/component.html',
   styleUrls: ['./component.css'],
 })

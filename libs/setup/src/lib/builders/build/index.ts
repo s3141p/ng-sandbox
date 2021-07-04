@@ -8,7 +8,7 @@ import {
   BrowserBuilderOptions,
 } from '@angular-devkit/build-angular';
 
-import { resolveDevkitContext } from '../shared/functions/devkit-context-resolve';
+import { resolveSandboxContext } from '../shared/functions/devkit-context-resolve';
 import { generateTsConfig } from '../shared/functions/generate-discovery-items';
 import { generateDiscoveryTs } from '../shared/functions/generate-discovery-ts';
 import { writeDiscoveryFilesAndClear } from '../shared/functions/save-ts-config';
@@ -25,21 +25,21 @@ const execute = (
 ): Promise<any> => {
   const { targetLib, options } = parseBuildOptions(buildOptions);
 
-  return resolveDevkitContext(options, context, 'tmp', targetLib)
-    .then((devkitContext) => {
-      const tsConfig = generateTsConfig(devkitContext);
-      const discoveryTs = generateDiscoveryTs(devkitContext.libsDescriptors);
+  return resolveSandboxContext(options, context, 'tmp', targetLib)
+    .then((sandboxContext) => {
+      const tsConfig = generateTsConfig(sandboxContext);
+      const discoveryTs = generateDiscoveryTs(sandboxContext.libsDescriptors);
 
       writeDiscoveryFilesAndClear(
         tsConfig,
         discoveryTs,
-        devkitContext.discoveryConfigPath,
-        devkitContext.discoveryTsPath
+        sandboxContext.discoveryConfigPath,
+        sandboxContext.discoveryTsPath
       );
 
       return executebBuilder(
         toNgBuildOptions(options, {
-          tsConfig: devkitContext.discoveryConfigPath,
+          tsConfig: sandboxContext.discoveryConfigPath,
         }),
         context
       ).toPromise();

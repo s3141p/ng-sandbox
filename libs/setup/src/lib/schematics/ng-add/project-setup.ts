@@ -36,7 +36,7 @@ export default function (options: Schema): Rule {
     const sourceRoot = getProjectSourceRoot(project);
 
     const builders = updateBuilders(options);
-    const devkitrc = createDevkitRc();
+    const sandboxrc = createSandboxrc();
     const discovery = addAppDiscoveryFile(options, project, sourceRoot);
     const imports = addModuleImports(project);
     const appComponentChanges = addAppComponentChanges(sourceRoot);
@@ -44,7 +44,7 @@ export default function (options: Schema): Rule {
 
     return chain([
       builders,
-      devkitrc,
+      sandboxrc,
       discovery,
       imports,
       appComponentChanges,
@@ -59,8 +59,8 @@ function updateBuilders(options: Schema): Rule {
     const buildTarget = project.targets.get('build');
     const serveTarget = project.targets.get('serve');
 
-    buildTarget.builder = '@ui-devkit/builders:build';
-    serveTarget.builder = '@ui-devkit/builders:serve';
+    buildTarget.builder = '@ng-sandbox/setup:build';
+    serveTarget.builder = '@ng-sandbox/setup:serve';
 
     project.targets.delete('serve');
     project.targets.delete('build');
@@ -70,12 +70,12 @@ function updateBuilders(options: Schema): Rule {
   });
 }
 
-function createDevkitRc(): Rule {
+function createSandboxrc(): Rule {
   return async (host: Tree, context: SchematicContext) => {
-    const devkit = '.devkitrc.json';
+    const sandboxrc = '.ng-sandboxrc.json';
 
-    if (!host.exists(devkit)) {
-      host.create(devkit, JSON.stringify({ libs: [] }));
+    if (!host.exists(sandboxrc)) {
+      host.create(sandboxrc, JSON.stringify({ libs: [] }));
     }
   };
 }
@@ -85,7 +85,7 @@ function addModuleImports(project: ProjectDefinition): Rule {
     addModuleImportToRootModule(
       host,
       'WidgetModule',
-      '@devkit/components',
+      '@ng-sandbox/components',
       project
     );
   };
@@ -100,21 +100,21 @@ function addAppComponentChanges(sourceRoot: string): Rule {
       appComponentPath,
       componentSource,
       'AppComponent',
-      '\nlibs: LibraryDescriptor[] = libraries;'
+      '\nlibraries: LibraryDescriptor[] = libraries;'
     );
 
     const discoveryChanges = insertImport(
       componentSource,
       appComponentPath,
       'libraries',
-      '@ng-preview/discovery'
+      '@ng-sandbox/discovery'
     );
 
     const libraryChanges = insertImport(
       componentSource,
       appComponentPath,
       'LibraryDescriptor',
-      '@ng-preview/components'
+      '@ng-sandbox/components'
     );
 
     insert(host, appComponentPath, [

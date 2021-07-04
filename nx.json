@@ -9,7 +9,7 @@
   "affected": {
     "defaultBase": "master"
   },
-  "npmScope": "devkit",
+  "npmScope": "ng-sandbox",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
@@ -25,10 +25,10 @@
     "examples-material": {
       "tags": []
     },
-    "devkit": {
+    "setup": {
       "tags": []
     },
-    "setup": {
+    "sandbox": {
       "tags": []
     }
   }

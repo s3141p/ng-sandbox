@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ExampleDescriptor } from '@devkit/components';
+import { ExampleDescriptor } from '@ng-sandbox/components';
 
 @Component({
-  selector: 'devkit-button-overview',
+  selector: 'ng-sandbox-button-overview',
   templateUrl: './component.html',
   styleUrls: ['./component.css'],
 })

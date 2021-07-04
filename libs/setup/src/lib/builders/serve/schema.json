@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "title": "@ui-devkit serve",
+  "title": "ng-sandbox serve",
   "description": "Browser target options",
   "type": "object",
   "properties": {

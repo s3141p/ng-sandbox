@@ -2,11 +2,11 @@ import Ajv from 'ajv';
 
 import { LibOptions } from '../types/lib-options';
 
-export interface Devkitrc {
+export interface Sandboxrc {
   libs: LibOptions[];
 }
 
-const devkitrcSchema = {
+const sandboxSchema = {
   type: 'object',
   properties: {
     libs: {
@@ -26,4 +26,4 @@ const devkitrcSchema = {
 };
 
 const ajv = new Ajv();
-export const devkitrcValidator = ajv.compile<Devkitrc>(devkitrcSchema);
+export const sandboxrcValidator = ajv.compile<Sandboxrc>(sandboxSchema);

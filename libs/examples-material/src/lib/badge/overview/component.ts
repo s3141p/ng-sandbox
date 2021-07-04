@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ExampleDescriptor } from '@devkit/components';
+import { ExampleDescriptor } from '@ng-sandbox/components';
 
 @Component({
-  selector: 'devkit-badge-overview',
+  selector: 'ng-sandbox-badge-overview',
   templateUrl: './component.html',
 })
 export class BadgeOverviewComponent {

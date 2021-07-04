@@ -4,10 +4,10 @@ import {
   MatBottomSheetRef,
 } from '@angular/material/bottom-sheet';
 
-import { ExampleDescriptor } from '@devkit/components';
+import { ExampleDescriptor } from '@ng-sandbox/components';
 
 @Component({
-  selector: 'devkit-bottom-sheet-list',
+  selector: 'ng-sandbox-bottom-sheet-list',
   template: `
     <mat-nav-list>
       <a
@@ -60,7 +60,7 @@ export class BottomSheetListComponent {
 }
 
 @Component({
-  selector: 'devkit-bottom-sheet-overview',
+  selector: 'ng-sandbox-bottom-sheet-overview',
   template: `
     <p>You have received a file called "cat-picture.jpeg".</p>
 

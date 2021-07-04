@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { libraries } from '@devkit/discovery';
-import { LibraryDescriptor } from '@devkit/components';
+import { libraries } from '@ng-sandbox/discovery';
+import { LibraryDescriptor } from '@ng-sandbox/components';
 
 @Component({
-  selector: 'devkit-root',
+  selector: 'ng-sandbox-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
