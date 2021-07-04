@@ -1,5 +1,3 @@
-![Integration](https://github.com/s3141p/ng-sandbox/actions/workflows/main.yml/badge.svg)
-
 # Ng Sandbox
 
 It's thin wrapper over default angular builders and widget which renders your components.
