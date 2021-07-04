@@ -1,21 +1,14 @@
-
 # Ng Sandbox
 
 It's thin wrapper over default angular builders and widget which renders your components.
 
-How usage looks like? Briefly:
+How to use?
 
-1. Create an angular application inside of your project
-2. Replace default builders for `serve` and `build`
-3. Add few typescript files
-4. Add widget to the created application
-5. Use `ng serve(build) --l=*libName*`
-
-So, there is no extra webpack configs and it's not framework.
-
-For example there is such [library](https://github.com/s3141p/ng-sandbox/tree/master/libs/examples-material) which is rendered at [github pages](https://s3141p.github.io/ng-sandbox/)
+1. `ng add @ng-sandbox/setup@latest --project=sandbox`
+2. Configure your component library according to this [example](https://github.com/s3141p/ng-sandbox/blob/master/libs/examples-material/src/discovery.ts)
+3. Use `ng (serve|build) sandbox --l=all`
 
 ## Links
 
-1. [Usage](./docs/usage.md)
+1. [Manual setup](./docs/manual-setup.md)
 2. [Development](./docs/development.md)
