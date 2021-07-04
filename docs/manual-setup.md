@@ -1,4 +1,4 @@
-# Setup checklist
+# Manual Setup
 
 ## Precaution
 
