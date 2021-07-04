@@ -8,7 +8,7 @@ import {
   BrowserBuilderOptions,
 } from '@angular-devkit/build-angular';
 
-import { resolveSandboxContext } from '../shared/functions/devkit-context-resolve';
+import { resolveSandboxContext } from '../shared/functions/sandbox-context-resolve';
 import { generateTsConfig } from '../shared/functions/generate-discovery-items';
 import { generateDiscoveryTs } from '../shared/functions/generate-discovery-ts';
 import { writeDiscoveryFilesAndClear } from '../shared/functions/save-ts-config';
