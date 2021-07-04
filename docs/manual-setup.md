@@ -17,17 +17,16 @@ What is library? Please consider such `angular.json`. Library it's a project wit
 }
 ```
 
-## Install
+## Prepare workspace
 
-1. `npm i --save-dev @ng-sandbox/builders @ng-sandbox/components`
+1. `npm i --save-dev @ng-sandbox/setup @ng-sandbox/components`
 
-## Angular Material Application generation
+### Angular Material Application generation
 
 2. `ng generate application --name=sandbox`
 3. Update `defaultProject` in `angular.json` to "devkit" (You can reset it after install)
 4. ng add @angular/material
 
-## Setup
 
 ### Builders configuring
 
@@ -57,43 +56,17 @@ What is library? Please consider such `angular.json`. Library it's a project wit
 }
 ```
 
-6. Create `.ng-sandboxrc.json` and specify that libraries which you will use, eg
+### Prepare application
+
+1. Create `.ng-sandboxrc.json` and specify that libraries which you will use, eg
 
 ```json
 {
-  "libs": [
-    {
-      "libName": "my-lib",
-      "tsConfig": "projects/my-lib/tsconfig.lib.json"
-    }
-  ]
+  "libs": []
 }
 ```
 
-### Prepare library
-
-7. Create `discovery.ts` and put it to your library `sourceRoot` folder. E.g. `${sourceRoot}/discovery.ts`
-
-8. Export constant `library` inside `discovery.ts` which satisfies [`LibraryDescriptor` type](https://github.com/s3141p/ng-sandbox/blob/master/libs/components/src/lib/types/library-descriptor.ts).
-
-```ts
-export const library: LibraryDescriptor = {
-  name: 'My Lib',
-  components: [
-      ...
-  ],
-};
-```
-
-### Prepare application
-
-9. import `LibraryDescriptor[]` inside `devkit` application:
-
-```typescript
-import { libraries } from '@ng-sandbox/discovery';
-```
-
-10. Import WidgetModule and provide it to the app module:
+2. Import `WidgetModule` and provide it to the app module:
 
 ```ts
 import { NgModule } from '@angular/core';
@@ -112,22 +85,17 @@ import { AppComponent } from './app.component';
 export class AppModule {
 ```
 
-11. Pass libraries to the devkit-widget:
+3. import `LibraryDescriptor[]` at `AppComponent`:
+
+```typescript
+import { libraries } from '@ng-sandbox/discovery';
+```
+
+4. Pass libraries to the devkit-widget:
 
 ```html
 <ng-sandbox-widget [libraries]="libraries"></ng-sandbox-widget>
 ```
-
-12. Serve/Build you application via:
-
-- `ng serve sandbox --l=all`
-- `ng build sandbox --l=all`
-
-## Notes
-
-- To run/build specific library use `--l=*name*`.
-
-- To remove erros in editor:
 
 1. Create discovery.ts file in sandbox source root:
 
@@ -149,4 +117,33 @@ export const libraries: LibraryDescriptor[] = [];
     }
   },
 }
+```
+
+### Prepare library
+
+1. Update .ng-discoveryrc.json with your library configuration
+
+```json
+{
+  "libs": [
+    {
+      "libName": "my-lib",
+      "tsConfig": "projects/my-lib/tsconfig.lib.json",
+      "discoveryPath": "discovery.ts"
+    }
+  ]
+}
+```
+
+2. Create `discovery.ts` and put it to your library `sourceRoot` folder. E.g. `${sourceRoot}/discovery.ts`
+
+3. Export constant `library` inside `discovery.ts` which satisfies [`LibraryDescriptor` type](https://github.com/s3141p/ng-sandbox/blob/master/libs/components/src/lib/types/library-descriptor.ts).
+
+```ts
+export const library: LibraryDescriptor = {
+  name: 'My Lib',
+  components: [
+      ...
+  ],
+};
 ```
