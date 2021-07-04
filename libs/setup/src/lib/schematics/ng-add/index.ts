@@ -1,23 +1,34 @@
 import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
-import { RunSchematicTask } from '@angular-devkit/schematics/tasks';
+import {
+  NodePackageInstallTask,
+  RunSchematicTask,
+} from '@angular-devkit/schematics/tasks';
 import { join } from 'path';
 
-import { addDependency, hasDependency } from '../utils/package-json';
+import {
+  addDependency,
+  getDependencyVersion,
+  hasDependency,
+} from '../utils/package-json';
 import { Schema } from './schema';
 
 export function ngAdd(options: Schema): Rule {
   return (tree: Tree, context: SchematicContext) => {
-    const range = '0.1.1';
-    const components = '@ng-sandbox/components';
-    const builders = '@ng-sandbox/builders';
+    const range = '^0.2.0';
+    const componentsPackage = '@ng-sandbox/components';
+    const materialPackage = '@angular/material';
+    const angularRange = getDependencyVersion(tree, '@angular/core', 'reg');
+    const materialRange = angularRange || '^12.0.0';
 
-    if (!hasDependency(tree, components)) {
-      addDependency(tree, components, range, 'dev');
+    if (!hasDependency(tree, componentsPackage)) {
+      addDependency(tree, componentsPackage, range, 'dev');
     }
 
-    if (!hasDependency(tree, builders)) {
-      addDependency(tree, builders, range, 'dev');
+    if (!hasDependency(tree, materialPackage)) {
+      addDependency(tree, materialPackage, materialRange, 'reg');
     }
+
+    const installId = context.addTask(new NodePackageInstallTask());
 
     const app = new RunSchematicTask('@schematics/angular', 'application', {
       name: options.project,
@@ -35,7 +46,7 @@ export function ngAdd(options: Schema): Rule {
 
     const setup = new RunSchematicTask('ng-add-setup-project', options);
 
-    const appId = context.addTask(app);
+    const appId = context.addTask(app, [installId]);
     const matId = context.addTask(material, [appId]);
     const setupId = context.addTask(setup, [matId]);
 

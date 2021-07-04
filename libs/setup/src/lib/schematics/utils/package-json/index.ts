@@ -1,4 +1,5 @@
 import { Tree } from '@angular-devkit/schematics';
+
 import { getFileContent } from '../file';
 
 export interface PackageJson {
