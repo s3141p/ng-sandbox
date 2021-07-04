@@ -1,7 +1,7 @@
-# setup
+# Ng Sandbox
 
-This library was generated with [Nx](https://nx.dev).
+Development sandbox for angular components.
 
-## Running unit tests
+Example - https://s3141p.github.io/ng-sandbox/
 
-Run `nx test setup` to execute the unit tests via [Jest](https://jestjs.io).
+More details at the [repo](https://github.com/s3141p/ng-sandbox)
