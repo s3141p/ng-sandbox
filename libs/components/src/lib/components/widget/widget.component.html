@@ -8,7 +8,7 @@
     <mat-icon>menu</mat-icon>
   </button>
 
-  <span class="logo" (click)="resetState()">Devkit</span>
+  <span class="logo" (click)="resetState()">Ng Sandbox</span>
 </mat-toolbar>
 
 <mat-drawer-container class="container" autosize>
@@ -32,12 +32,12 @@
   <div class="sidenav-content">
     <div class="examples">
       <ng-container *ngFor="let example of currentComponent?.examples">
-        <devkit-example
+        <ng-sandbox-example
           *ngIf="currentComponent"
           [example]="example"
           [moduleWithDependencies]="currentComponent.moduleWithDependencies"
           [component]="currentComponent?.component"
-        ></devkit-example>
+        ></ng-sandbox-example>
       </ng-container>
     </div>
   </div>

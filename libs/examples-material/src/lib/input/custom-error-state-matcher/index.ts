@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 
-import { ExampleDescriptor } from '@devkit/components';
+import { ExampleDescriptor } from '@ng-sandbox/components';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -24,7 +24,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'devkit-input-error-state-matcher-example',
+  selector: 'ng-sandbox-input-error-state-matcher-example',
   template: `
     <form class="example-form">
       <mat-form-field class="example-full-width">

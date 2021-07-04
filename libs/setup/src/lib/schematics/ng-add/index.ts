@@ -8,8 +8,8 @@ import { Schema } from './schema';
 export function ngAdd(options: Schema): Rule {
   return (tree: Tree, context: SchematicContext) => {
     const range = '0.1.1';
-    const components = '@ui-devkit/components';
-    const builders = '@ui-devkit/builders';
+    const components = '@ng-sandbox/components';
+    const builders = '@ng-sandbox/builders';
 
     if (!hasDependency(tree, components)) {
       addDependency(tree, components, range, 'dev');

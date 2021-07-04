@@ -75,10 +75,12 @@ describe('Schematic: ng add', () => {
     it('it should add dependencies to package.json', async () => {
       const packageJson = getPackageJson(tree);
 
-      expect(packageJson.devDependencies['@ui-devkit/components']).toContain(
+      expect(packageJson.devDependencies['@ng-sandbox/components']).toContain(
         '0'
       );
-      expect(packageJson.devDependencies['@ui-devkit/builders']).toContain('0');
+      expect(packageJson.devDependencies['@ng-sandbox/builders']).toContain(
+        '0'
+      );
     });
   });
 
@@ -128,14 +130,14 @@ describe('Schematic: ng add', () => {
     it('should overwrite builders', async () => {
       const targets = project.targets;
 
-      expect(targets.get('build').builder).toEqual('@ui-devkit/builders:build');
-      expect(targets.get('serve').builder).toEqual('@ui-devkit/builders:serve');
+      expect(targets.get('build').builder).toEqual('@ng-sandbox/setup:build');
+      expect(targets.get('serve').builder).toEqual('@ng-sandbox/setup:serve');
     });
 
-    it('should setup .devkitrc.json', () => {
-      const devkitrc = JSON.parse(getFileContent(tree, '.devkitrc.json'));
+    it('should setup .ng-sandboxrc.json', () => {
+      const sandboxrc = JSON.parse(getFileContent(tree, '.ng-sandboxrc.json'));
 
-      expect(devkitrc).toEqual({ libs: [] });
+      expect(sandboxrc).toEqual({ libs: [] });
     });
 
     it('should create discovery.ts file and patch root tsconfig', () => {
@@ -157,7 +159,7 @@ describe('Schematic: ng add', () => {
       const mainModule = tree.read(mainModulePath).toString();
 
       expect(mainModule).toContain(
-        `import { WidgetModule } from '@devkit/components';`
+        `import { WidgetModule } from '@ng-sandbox/components';`
       );
     });
 
@@ -166,7 +168,7 @@ describe('Schematic: ng add', () => {
       const mainModule = tree.read(mainModulePath).toString();
 
       expect(mainModule).toContain(
-        `import { WidgetModule } from '@devkit/components';`
+        `import { WidgetModule } from '@ng-sandbox/components';`
       );
     });
 
@@ -187,18 +189,18 @@ describe('Schematic: ng add', () => {
       const componentScssContent = tree.read(componentScss).toString();
 
       expect(componentTsContent).toContain(
-        `import { libraries } from '@ng-preview/discovery';`
+        `import { libraries } from '@ng-sandbox/discovery';`
       );
       expect(componentTsContent).toContain(
-        `import { LibraryDescriptor } from '@ng-preview/components';`
+        `import { LibraryDescriptor } from '@ng-sandbox/components';`
       );
 
       expect(componentTsContent).toContain(
-        `libs: LibraryDescriptor[] = libraries;`
+        `libraries: LibraryDescriptor[] = libraries;`
       );
 
       expect(componentHtmlContent).toContain(
-        `<devkit-widget [libraries]="libraries"></devkit-widget>`
+        `<ng-sandbox-widget [libraries]="libraries"></ng-sandbox-widget>`
       );
 
       expect(componentScssContent).toContain(`height: 100%`);

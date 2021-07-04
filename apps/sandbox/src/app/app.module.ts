@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { WidgetModule } from '@devkit/components';
+import { WidgetModule } from '@ng-sandbox/components';
 
 import { AppComponent } from './app.component';
 

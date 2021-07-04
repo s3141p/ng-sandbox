@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { ExampleDescriptor } from '@devkit/components';
+import { ExampleDescriptor } from '@ng-sandbox/components';
 
 @Component({
   template: `<mat-form-field class="example-form-field">

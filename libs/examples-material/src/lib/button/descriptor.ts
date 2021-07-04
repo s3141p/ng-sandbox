@@ -1,6 +1,4 @@
-import { MatInput } from '@angular/material/input';
-
-import { ComponentDescriptor } from '@devkit/components';
+import { ComponentDescriptor } from '@ng-sandbox/components';
 
 import { ButtonDependenciesModule } from './dependencies';
 import { ButtonOverviewDescriptor } from './basic/component';

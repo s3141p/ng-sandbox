@@ -20,7 +20,7 @@ import {
 } from '../../types/example-descriptor';
 
 @Component({
-  selector: 'devkit-component-preview',
+  selector: 'ng-sandbox-component-preview',
   templateUrl: './component-preview.component.html',
   styleUrls: ['./component-preview.component.scss'],
 })

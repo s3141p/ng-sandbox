@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { ComponentDescriptor, LibraryDescriptor } from '@devkit/components';
+import { ComponentDescriptor, LibraryDescriptor } from '@ng-sandbox/components';
 
 @Component({
-  selector: 'devkit-widget',
+  selector: 'ng-sandbox-widget',
   templateUrl: './widget.component.html',
   styleUrls: ['./widget.component.scss'],
 })

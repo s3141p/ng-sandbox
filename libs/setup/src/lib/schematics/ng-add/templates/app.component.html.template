@@ -1,1 +1,1 @@
-<devkit-widget [libraries]="libraries"></devkit-widget>
+<ng-sandbox-widget [libraries]="libraries"></ng-sandbox-widget>

@@ -19,35 +19,35 @@ What is library? Please consider such `angular.json`. Library it's a project wit
 
 ## Install
 
-1. `npm i --save-dev @ui-devkit/builders @ui-devkit/components`
+1. `npm i --save-dev @ng-sandbox/builders @ng-sandbox/components`
 
 ## Angular Material Application generation
 
-2. `ng generate application --name=devkit`
+2. `ng generate application --name=sandbox`
 3. Update `defaultProject` in `angular.json` to "devkit" (You can reset it after install)
 4. ng add @angular/material
 
-## Devkit setup
+## Setup
 
 ### Builders configuring
 
-5. In `angular.json` change the devkit app builders
+5. In `angular.json` change the sandbox app builders
 
 ```diff json
-"devkit": {
+"sandbox": {
     "projectType": "application",
     ...
     "architect": {
         "build": {
 -         "builder": "@angular-devkit/build-angular:browse",
-+         "builder": "@ui-devkit/builders:build",
++         "builder": "@ng-sandbox/builders:build",
           "options": {
               ...
           }
         },
         "serve": {
 -           "builder": "@angular-devkit/build-angular:dev-server",
-+           "builder": "@ui-devkit/builders:serve",
++           "builder": "@ng-sandbox/builders:serve",
             "configurations": {
                 ...
             },
@@ -57,7 +57,7 @@ What is library? Please consider such `angular.json`. Library it's a project wit
 }
 ```
 
-6. Create `.devkitrc.json` and specify that libraries which you will use, eg
+6. Create `.ng-sandboxrc.json` and specify that libraries which you will use, eg
 
 ```json
 {
@@ -74,7 +74,7 @@ What is library? Please consider such `angular.json`. Library it's a project wit
 
 7. Create `discovery.ts` and put it to your library `sourceRoot` folder. E.g. `${sourceRoot}/discovery.ts`
 
-8. Export constant `library` inside `discovery.ts` which satisfies [`LibraryDescriptor` type](https://github.com/s3141p/ui-devkit/blob/master/libs/components/src/lib/types/library-descriptor.ts).
+8. Export constant `library` inside `discovery.ts` which satisfies [`LibraryDescriptor` type](https://github.com/s3141p/ng-sandbox/blob/master/libs/components/src/lib/types/library-descriptor.ts).
 
 ```ts
 export const library: LibraryDescriptor = {
@@ -90,7 +90,7 @@ export const library: LibraryDescriptor = {
 9. import `LibraryDescriptor[]` inside `devkit` application:
 
 ```typescript
-import { libraries } from '@devkit/discovery';
+import { libraries } from '@ng-sandbox/discovery';
 ```
 
 10. Import WidgetModule and provide it to the app module:
@@ -99,7 +99,7 @@ import { libraries } from '@devkit/discovery';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { WidgetModule } from '@devkit/components';
+import { WidgetModule } from '@ng-sandbox/components';
 
 import { AppComponent } from './app.component';
 
@@ -115,13 +115,13 @@ export class AppModule {
 11. Pass libraries to the devkit-widget:
 
 ```html
-<devkit-widget [libraries]="libraries"></devkit-widget>
+<ng-sandbox-widget [libraries]="libraries"></ng-sandbox-widget>
 ```
 
 12. Serve/Build you application via:
 
-- `ng serve devkit --l=all`
-- `ng build devkit --l=all`
+- `ng serve sandbox --l=all`
+- `ng build sandbox --l=all`
 
 ## Notes
 
@@ -129,10 +129,10 @@ export class AppModule {
 
 - To remove erros in editor:
 
-1. Create discovery.ts file in devkit source root:
+1. Create discovery.ts file in sandbox source root:
 
 ```ts
-import { LibraryDescriptor } from '@devkit/components';
+import { LibraryDescriptor } from '@ng-sandbox/components';
 
 export const libraries: LibraryDescriptor[] = [];
 ```
@@ -145,7 +145,7 @@ export const libraries: LibraryDescriptor[] = [];
     ...
     "paths": {
       ...
-+     "@devkit/discovery": ["projects/devkit/src/discovery.ts"],
++     "@ng-sandbox/discovery": ["projects/sandbox/src/discovery.ts"],
     }
   },
 }

@@ -1,4 +1,4 @@
-import { LibraryDescriptor } from '@devkit/components';
+import { LibraryDescriptor } from '@ng-sandbox/components';
 
 import { BadgeComponentDescriptor } from './lib/badge/descriptor';
 import { BottomSheetComponentDescriptor } from './lib/bottom-sheet/descriptor';

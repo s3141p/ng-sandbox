@@ -3,10 +3,10 @@ import { Schema } from './schema';
 
 export function library(options: Schema): Rule {
   return (tree: Tree, context: SchematicContext) => {
-    const rc = '.devkitrc.json';
+    const rc = '.ng-sanboxrc.json';
 
     if (!tree.exists(rc)) {
-      tree.create('.devkitrc.json', JSON.stringify({ libs: [] }));
+      tree.create('.ng-sandboxrc.json', JSON.stringify({ libs: [] }));
     }
 
     return tree;

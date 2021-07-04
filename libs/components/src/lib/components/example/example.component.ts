@@ -10,7 +10,7 @@ import {
 import { ExampleDescriptor } from '../../types';
 
 @Component({
-  selector: 'devkit-example',
+  selector: 'ng-sandbox-example',
   templateUrl: './example.component.html',
   styleUrls: ['./example.component.scss'],
 })

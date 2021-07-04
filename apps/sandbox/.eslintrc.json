@@ -9,14 +9,14 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "parserOptions": {
-        "project": ["apps/devkit/tsconfig.*?.json"]
+        "project": ["apps/sandbox/tsconfig.*?.json"]
       },
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
           {
             "type": "attribute",
-            "prefix": "devkit",
+            "prefix": "ng-sandbox",
             "style": "camelCase"
           }
         ],
@@ -24,7 +24,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "devkit",
+            "prefix": "ng-sandbox",
             "style": "kebab-case"
           }
         ]

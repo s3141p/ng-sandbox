@@ -1,13 +1,13 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "ui-devkit-ng-add",
-  "title": "Ui-devkit ng-add schematic",
+  "$id": "ng-sandbox-ng-add",
+  "title": "ng-sandbox ng-add schematic",
   "type": "object",
   "properties": {
     "project": {
       "type": "string",
       "description": "Name of the project.",
-      "default": "devkit",
+      "default": "sandbox",
       "x-prompt": "Name of the project"
     },
     "projectRoot": {

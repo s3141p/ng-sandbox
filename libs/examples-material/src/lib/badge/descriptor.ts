@@ -1,6 +1,6 @@
 import { MatBadge } from '@angular/material/badge';
 
-import { ComponentDescriptor } from '@devkit/components';
+import { ComponentDescriptor } from '@ng-sandbox/components';
 
 import { BadgeDependenciesModule } from './dependencies';
 import { BadgeOverviewDescriptor } from './overview/component';
