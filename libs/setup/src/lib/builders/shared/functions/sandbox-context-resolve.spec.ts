@@ -10,7 +10,7 @@ import { LibMetadata } from '../../ng/types/lib-metadata';
 
 jest.mock('./sandbox-context-parse');
 
-fdescribe('resolveSandboxContext', () => {
+describe('resolveSandboxContext', () => {
   const targetLib = 'core-ui-kit';
   const discoveryFolder = 'tmp';
 
