@@ -32,6 +32,17 @@ describe('Schematic: ng add', () => {
     it('should add tasks to the queue', () => {
       expect(runner.tasks).toEqual([
         {
+          name: 'node-package',
+          options: {
+            command: 'install',
+            hideOutput: true,
+            packageManager: undefined,
+            packageName: undefined,
+            quiet: true,
+            workingDirectory: undefined,
+          },
+        },
+        {
           name: 'run-schematic',
           options: {
             collection: '@schematics/angular',
@@ -76,9 +87,6 @@ describe('Schematic: ng add', () => {
       const packageJson = getPackageJson(tree);
 
       expect(packageJson.devDependencies['@ng-sandbox/components']).toContain(
-        '0'
-      );
-      expect(packageJson.devDependencies['@ng-sandbox/builders']).toContain(
         '0'
       );
     });
