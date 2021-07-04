@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { ComponentDescriptor, LibraryDescriptor } from '@ng-sandbox/components';
+import { ComponentDescriptor } from '../../types/component-descriptor';
+import { LibraryDescriptor } from '../../types/library-descriptor';
 
 @Component({
   selector: 'ng-sandbox-widget',
