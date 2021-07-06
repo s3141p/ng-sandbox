@@ -6,3 +6,8 @@ export interface ComponentDescriptor {
   examples: ExampleDescriptor[];
   name: string;
 }
+
+export interface AsyncComponentDescriptor {
+  resolve: () => Promise<ComponentDescriptor>;
+  name: string;
+}

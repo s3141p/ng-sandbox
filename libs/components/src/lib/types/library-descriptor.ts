@@ -1,6 +1,9 @@
-import { ComponentDescriptor } from './component-descriptor';
+import {
+  AsyncComponentDescriptor,
+  ComponentDescriptor,
+} from './component-descriptor';
 
 export interface LibraryDescriptor {
   name: string;
-  components: ComponentDescriptor[];
+  components: (ComponentDescriptor | AsyncComponentDescriptor)[];
 }

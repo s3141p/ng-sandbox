@@ -1,5 +1,7 @@
 import {
+  Compiler,
   ComponentFactoryResolver,
+  NgModule,
   NgModuleRef,
   OnDestroy,
 } from '@angular/core';
@@ -34,7 +36,10 @@ export class ComponentPreviewComponent implements OnInit, OnDestroy {
 
   destroy = new Subject<null>();
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private compiler: Compiler
+  ) {}
 
   ngOnInit() {
     setTimeout(() => {

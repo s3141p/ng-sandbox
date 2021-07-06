@@ -7,6 +7,9 @@ import { ButtonToggleExclusiveComponent } from './exclusive/component';
 
 @NgModule({
   imports: [MatButtonToggleModule, MatIconModule],
-  declarations: [ButtonToggleAppearenceComponent, ButtonToggleExclusiveComponent],
+  declarations: [
+    ButtonToggleAppearenceComponent,
+    ButtonToggleExclusiveComponent,
+  ],
 })
 export class ButtonToggleDependenciesModule {}

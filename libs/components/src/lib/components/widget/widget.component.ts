@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { ComponentDescriptor } from '../../types/component-descriptor';
+import {
+  AsyncComponentDescriptor,
+  ComponentDescriptor,
+} from '../../types/component-descriptor';
 import { LibraryDescriptor } from '../../types/library-descriptor';
 
 @Component({
@@ -24,14 +27,17 @@ export class WidgetComponent implements OnInit {
     this.currentLib = null;
   }
 
-  openExamplesFor(lib: LibraryDescriptor, component: ComponentDescriptor) {
+  async openExamplesFor(
+    lib: LibraryDescriptor,
+    component: ComponentDescriptor | AsyncComponentDescriptor
+  ) {
     this.currentLib = lib;
-    this.currentComponent = component;
+    this.currentComponent = await this.resolve(component);
 
     localStorage.setItem('current', [lib.name, component.name].join(':'));
   }
 
-  private restoreState() {
+  private async restoreState() {
     const state = localStorage.getItem('current');
 
     if (!state) {
@@ -52,8 +58,24 @@ export class WidgetComponent implements OnInit {
     if (!component) {
       return;
     }
-
-    this.currentComponent = component;
     this.currentLib = lib;
+
+    if (this.isAsync(component)) {
+      this.currentComponent = await component.resolve();
+    } else {
+      this.currentComponent = component;
+    }
+  }
+
+  resolve(
+    descr: ComponentDescriptor | AsyncComponentDescriptor
+  ): Promise<ComponentDescriptor> {
+    return this.isAsync(descr) ? descr.resolve() : Promise.resolve(descr);
+  }
+
+  isAsync(
+    descr: ComponentDescriptor | AsyncComponentDescriptor
+  ): descr is AsyncComponentDescriptor {
+    return !(descr as ComponentDescriptor).examples;
   }
 }
