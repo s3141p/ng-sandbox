@@ -16,6 +16,7 @@ import { toNgBuildOptions } from '../shared/functions/to-ng-build-options';
 import { BuilderExecutor } from '../shared/types/builder-executor';
 import { BuildOptions } from '../shared/types/options-build';
 import { parseBuildOptions } from './functions/parse-build-options';
+import { checkLibrariesDiscoveryFiles } from '../shared/functions/check-libs-discovery-file';
 
 const execute = (
   executebBuilder: BuilderExecutor<BrowserBuilderOptions>
@@ -26,6 +27,11 @@ const execute = (
   const { targetLib, options } = parseBuildOptions(buildOptions);
 
   return resolveSandboxContext(options, context, 'tmp', targetLib)
+    .then((sandboxContext) =>
+      checkLibrariesDiscoveryFiles(sandboxContext.libsDescriptors).then(
+        () => sandboxContext
+      )
+    )
     .then((sandboxContext) => {
       const tsConfig = generateTsConfig(sandboxContext);
       const discoveryTs = generateDiscoveryTs(sandboxContext.libsDescriptors);

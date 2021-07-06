@@ -143,7 +143,7 @@ describe('resolveSandboxContext', () => {
 
             expect(mockLogError).toHaveBeenNthCalledWith(
               1,
-              'Invalid application metadata:'
+              'Invalid application definition in angular.json'
             );
           });
 
@@ -172,7 +172,7 @@ describe('resolveSandboxContext', () => {
             expect(mockMetadata).toHaveBeenNthCalledWith(3, 'core-components');
             expect(mockLogError).toHaveBeenNthCalledWith(
               1,
-              'Invalid library metadata:'
+              'Invalid library definition in angular.json'
             );
           });
         });
