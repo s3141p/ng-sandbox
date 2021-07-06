@@ -8,6 +8,12 @@
   "main": "src/index.js",
   "builders": "./builders.json",
   "schematics": "./collection.json",
+  "keywords": [
+    "angular",
+    "components",
+    "documentation",
+    "sandbox"
+  ],
   "ng-add": {
     "save": "devDependencies"
   }
