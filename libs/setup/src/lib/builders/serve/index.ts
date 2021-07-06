@@ -18,6 +18,7 @@ import { BuilderExecutor } from '../shared/types/builder-executor';
 import { ServeOptions } from '../shared/types/options-serve';
 import { overwriteTsConfigPath } from './functions/overwrite-ts-config-path';
 import { parseServerOptions } from './functions/parse-serve-options';
+import { checkLibrariesDiscoveryFiles } from '../shared/functions/check-libs-discovery-file';
 
 const execute = (
   executebBuilder: BuilderExecutor<ServeOptions>
@@ -36,6 +37,11 @@ const execute = (
         context,
         'tmp',
         targetLib
+      )
+    )
+    .then((sandboxContext) =>
+      checkLibrariesDiscoveryFiles(sandboxContext.libsDescriptors).then(
+        () => sandboxContext
       )
     )
     .then((sandboxContext) => {

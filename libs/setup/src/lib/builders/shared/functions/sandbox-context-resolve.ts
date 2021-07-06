@@ -59,7 +59,7 @@ export function resolveSandboxContext(
     })
     .then(([sandboxrc, appMeta, libs]) => {
       if (!appMetadataValidator(appMeta)) {
-        logger.error('Invalid application metadata:');
+        logger.error('Invalid application definition in angular.json');
         logger.error(JSON.stringify(appMetadataValidator.errors));
 
         throw '';
@@ -67,7 +67,7 @@ export function resolveSandboxContext(
 
       const libsMeta = libs.map((item) => {
         if (!libMetadataValidator(item)) {
-          logger.error('Invalid library metadata:');
+          logger.error('Invalid library definition in angular.json');
           logger.error(JSON.stringify(libMetadataValidator.errors));
 
           throw '';
